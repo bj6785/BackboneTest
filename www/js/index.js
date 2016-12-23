@@ -18,15 +18,21 @@
  */
 
 var TestView = Backbone.View.extend({
-    el: $('p'),
     initialize: function () {
         this.render();
     },
     render: function () {
-        this.$el.html("Hello world");
+        var tmp = _.template($("#JustTest").html());
+
+        this.$el.html(tmp);
         return this;
+    },
+    events: {
+        "dblclick .hd": "do_extra",
+    },
+    do_extra: function () {
+        alert("HAHAHA");
     }
 });
 
-// var test = new TestView({el: $('#body')});
-var test = new TestView();
+var test = new TestView({el: $("#body")});
