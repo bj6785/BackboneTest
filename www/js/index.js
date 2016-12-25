@@ -35,4 +35,20 @@ var TestView = Backbone.View.extend({
     }
 });
 
-var test = new TestView({el: $("#body")});
+var TestRouter = Backbone.Router.extend({
+    routes: {
+        "pages/:page/p:id" : "getpost",
+        "*actions" : "defauteRoute"
+    },
+    getpost: function (page, id) {
+       alert(page + " " + id);
+    },
+    defauteRoute: function () {
+        alert("default");
+    }
+});
+
+var route = new TestRouter();
+Backbone.history.start();
+route.navigate("pages/xxx/p1", {trigger:true});
+// var test = new TestView({el: $("#body")});
