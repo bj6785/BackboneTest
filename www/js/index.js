@@ -16,6 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var Person = Backbone.Model.extend({
+    defaults : {
+        name : "undefined",
+        age : "undefined"
+    },
+    initialize : function () {
+       console.log("Person init.....");
+    }
+});
+
+var p1 = new Person({ name : "p1_name", age : "p1_age" });
+var p2 = new Person({ name : "p2_name", age : "p2_age"});
+
+var People = Backbone.Collection.extend({
+    model : Person
+});
+
+// var people = new People([p1, p2]);
+// people.add({name : "p3_name", age : "p3_age"})
+// console.log(people.toJSON());
+
 
 var TestView = Backbone.View.extend({
     initialize: function () {
@@ -48,7 +69,7 @@ var TestRouter = Backbone.Router.extend({
     }
 });
 
-var route = new TestRouter();
-Backbone.history.start();
-route.navigate("pages/xxx/p1", {trigger:true});
+// var route = new TestRouter();
+// Backbone.history.start();
+// route.navigate("pages/xxx/p1", {trigger:true});
 // var test = new TestView({el: $("#body")});
